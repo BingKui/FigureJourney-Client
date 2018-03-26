@@ -9,10 +9,34 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
+  // 设置页面分享内容
+  onShareAppMessage: function(res) {
+    return {
+      title: '还在为记录点滴发愁？快来记录~~',
+      path: '/pages/index',
+      imageUrl: '../../images/home.png',
+      success: function (res) {
+        // 转发成功
+      },
+      fail: function (res) {
+        // 转发失败
+      }
+    }
+  },
   //事件处理函数
   addRecord: function() {
     wx.navigateTo({
-      url: '../logs/logs'
+      url: '../addrocord/addrocord'
+    })
+  },
+  goToList: function() {
+    wx.navigateTo({
+      url: '../list/list'
+    })
+  },
+  goToOwer: function() {
+    wx.navigateTo({
+      url: '../ower/ower'
     })
   },
   onLoad: function () {

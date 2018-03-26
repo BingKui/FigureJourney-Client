@@ -1,7 +1,18 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="view-list">
-    <text>列表</text>
+  <view class="top-info flex-column-center">
+    <image class="image-item" src="../../images/home.png" />
+    <text class="text-info">数字记录回忆，数据改变生活</text>
   </view>
-  <view class="view-add-btn" bindtap="addRecord">添加</view>
+  <view class="bottom-btn flex-row-center">
+    <view class="view-list-btn" bindtap="goToList">
+      <image src="../../images/list.svg" />
+    </view>
+    <view class="view-add-btn" bindtap="addRecord">
+      <image src="../../images/add.svg" />
+    </view>
+    <view class="view-ower-btn" bindtap="goToOwer">
+      <image src="../../images/ower.svg" />
+    </view>
+  </view>
 </view>

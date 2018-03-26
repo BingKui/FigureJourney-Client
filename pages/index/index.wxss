@@ -1,12 +1,42 @@
 /**index.wxss**/
-.view-add-btn {
-  width: 200rpx;
-  height: 200rpx;
+.top-info {
+  width: 100%;
+  height: 65%;
+}
+.bottom-btn {
+  width: 100%;
+  height: 35%;
+}
+.text-info {
+  font-size: 32rpx;
+}
+.view-list-btn,
+.view-add-btn,
+.view-ower-btn {
+  width: 220rpx;
+  height: 220rpx;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
-  bottom: 60rpx;
-  box-shadow: 0 0 30rpx rgba(0, 0, 0, .3); 
+  background-color: rgba(218, 237, 248, .9);
+  box-shadow: 0 0 40rpx rgba(198, 216, 229, .7); 
+}
+.view-add-btn {
+  margin: 0 60rpx;
+}
+.view-list-btn,
+.view-ower-btn {
+  width: 120rpx;
+  height: 120rpx;
+  margin-top: 160rpx;
+}
+.view-add-btn image {
+  width: 120rpx;
+  color: rgb(87, 99, 115)
+}
+.view-list-btn image,
+.view-ower-btn image {
+  width: 60rpx;
+  color: rgb(87, 99, 115)
 }
