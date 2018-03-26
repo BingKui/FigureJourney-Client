@@ -2,3 +2,40 @@
 <!-- 回忆类型：1.默认（脚印） 2.住宿（酒店） 3.餐饮（餐厅） 4.景点（景区） 5.场馆（体育场）  -->
 <!--  保存数据：1.地点 2.天气 3.标题 4.心情 5.补充 6.类型 7.照片（后续） 8.录音（后续） 9.视频（后续）  -->
 <!--  智能化：获取目前地点，判断是否是存在的类型，自动选中该类型  -->
+<view class="page-container">
+  <form bindsubmit="formSubmit" bindreset="formReset">
+    <view class="form-item">
+      <text>心情</text>
+      <radio-group class="mood-group" bindchange="radioChange">
+        <view class="mood-item {{item.checked ? 'checked' : ''}}" wx:key="item" wx:for="{{radioItems}}">
+          <radio id="{{item.name}}" hidden value="{{item.name}}" checked="{{item.checked}}"></radio>
+          <label class="mood-label" for="{{item.name}}">
+            <image class="mood-icon" src="{{item.src}}" />
+          </label>
+        </view>
+      </radio-group>
+    </view>
+    <view class="form-item">
+      <text>心情</text>
+      <radio-group class="mood-group" bindchange="radioChange">
+        <view class="mood-item {{item.checked ? 'checked' : ''}}" wx:key="item" wx:for="{{radioItems}}">
+          <radio id="{{item.name}}" hidden value="{{item.name}}" checked="{{item.checked}}"></radio>
+          <label class="mood-label" for="{{item.name}}">
+            <image class="mood-icon" src="{{item.src}}" />
+          </label>
+        </view>
+      </radio-group>
+    </view>
+    <view class="form-item">
+      <text>心情</text>
+      <radio-group class="mood-group" bindchange="radioChange">
+        <view class="mood-item {{item.checked ? 'checked' : ''}}" wx:key="item" wx:for="{{radioItems}}">
+          <radio id="{{item.name}}" hidden value="{{item.name}}" checked="{{item.checked}}"></radio>
+          <label class="mood-label" for="{{item.name}}">
+            <image class="mood-icon" src="{{item.src}}" />
+          </label>
+        </view>
+      </radio-group>
+    </view>
+  </form>
+</view>

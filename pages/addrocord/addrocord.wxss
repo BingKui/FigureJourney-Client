@@ -1,1 +1,24 @@
 /* pages/addrocord/addrocord.wxss */
+.form-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.mood-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.mood-item {
+  width: 100rpx;
+  height: 100rpx;
+}
+.mood-item.checked {
+  background-color: rgba(218, 237, 248, .9);
+}
+.mood-icon {
+  width: 100rpx;
+  height: 100rpx;
+}

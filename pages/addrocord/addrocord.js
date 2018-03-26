@@ -5,7 +5,27 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    radioItems: [
+      { src: '../../images/1.png', name: '1', value: '美国' },
+      { src: '../../images/2.png', name: '2', value: '中国', checked: 'true' },
+      { src: '../../images/3.png', name: '3', value: '巴西' },
+      { src: '../../images/4.png', name: '4', value: '日本' },
+      { src: '../../images/5.png', name: '5', value: '英国' },
+      { src: '../../images/6.png', name: '6', value: '法国' },
+    ],
+    hidden: false
+  },
+  radioChange: function (e) {
+    var checked = e.detail.value
+    var changed = {}
+    for (var i = 0; i < this.data.radioItems.length; i++) {
+      if (checked.indexOf(this.data.radioItems[i].name) !== -1) {
+        changed['radioItems[' + i + '].checked'] = true
+      } else {
+        changed['radioItems[' + i + '].checked'] = false
+      }
+    }
+    this.setData(changed)
   },
 
   /**
