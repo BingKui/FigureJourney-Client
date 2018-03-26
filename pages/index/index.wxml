@@ -1,0 +1,7 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="view-list">
+    <text>列表</text>
+  </view>
+  <view class="view-add-btn" bindtap="addRecord">添加</view>
+</view>
