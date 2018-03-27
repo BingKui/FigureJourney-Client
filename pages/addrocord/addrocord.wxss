@@ -37,17 +37,33 @@
 
 .location-info-card .weather {
   display: flex;
+  flex-direction: row;
 }
-.weather-today-info {
-  flex: 1;
-}
+
 .weather-today-info .weather-icon {
-  width: 60rpx;
-  height: 60rpx;
+  width: 120rpx;
+  height: 120rpx;
 }
 .weather-base-info {
   display: flex;
+  flex: 1;
   flex-direction: column;
+}
+.weather-base-info text {
+  height: 60rpx;
+  line-height: 60rpx;
+}
+
+.weather-today-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.temperature,
+.temperature-now {
+  text-align: right;
+  height: 60rpx;
+  line-height: 60rpx;
 }
 
 .mood-group {

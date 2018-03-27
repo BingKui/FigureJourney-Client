@@ -13,9 +13,10 @@
     </view>
     <view class="weather">
       <view class="weather-base-info">
-        <text>{{weather.pm25}}</text>
-        <text>{{weather.weatherDesc}}</text>
-        <text>{{weather.wind}}</text>
+        <text>{{weather.date}}</text>
+        <text>PM2.5: {{weather.pm25}}</text>
+        <text>天气: {{weather.weather}}</text>
+        <text>风向: {{weather.wind}}</text>
       </view>
       <view class="weather-today-info">
         <text class="temperature-now">{{weather.realtimeTemperature}}</text>
@@ -23,7 +24,6 @@
         <text class="temperature">{{weather.temperature}}</text>
       </view>
     </view>
-    <view class="date">{{weather.date}}</view>
   </view>
   <form bindsubmit="formSubmit" bindreset="formReset">
     <!-- <view class="form-item">
