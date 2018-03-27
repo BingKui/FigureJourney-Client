@@ -1,4 +1,5 @@
 /* pages/addrocord/addrocord.wxss */
+
 .form-item {
   display: flex;
   flex-direction: row;
@@ -6,17 +7,19 @@
   margin-bottom: 20rpx;
   font-size: 28rpx;
 }
+
 .form-item .form-item-label {
   margin-right: 10rpx;
   width: 60rpx;
 }
+
 .form-item .form-item-content {
   flex: 1;
 }
 
 .location-info-card {
   font-size: 28rpx;
-  background-color: rgba(218, 237, 248, .9);
+  background-color: rgba(218, 237, 248, 0.9);
   border-radius: 20rpx;
   padding: 20rpx;
   margin-bottom: 20rpx;
@@ -25,11 +28,13 @@
 .location-info-card .name {
   font-size: 36rpx;
 }
+
 .location-info-card .math-tude {
   text-align: center;
   font-size: 24rpx;
   color: #666;
 }
+
 .location-info-card .location-icon {
   width: 40rpx;
   height: 40rpx;
@@ -38,17 +43,20 @@
 .location-info-card .weather {
   display: flex;
   flex-direction: row;
+  color: rgb(87, 99, 115);
 }
 
 .weather-today-info .weather-icon {
   width: 120rpx;
   height: 120rpx;
 }
+
 .weather-base-info {
   display: flex;
   flex: 1;
   flex-direction: column;
 }
+
 .weather-base-info text {
   height: 60rpx;
   line-height: 60rpx;
@@ -59,8 +67,8 @@
   display: flex;
   flex-direction: column;
 }
-.temperature,
-.temperature-now {
+
+.temperature, .temperature-now {
   text-align: right;
   height: 60rpx;
   line-height: 60rpx;
@@ -72,20 +80,38 @@
   justify-content: flex-start;
   align-items: center;
 }
+
 .mood-item {
   width: 100rpx;
   height: 100rpx;
   border-radius: 20rpx;
 }
+
 .mood-item.checked {
-  background-color: rgba(218, 237, 248, .9);
+  background-color: rgba(218, 237, 248, 0.9);
 }
+
 .mood-icon {
   width: 100rpx;
   height: 100rpx;
 }
+
 .mood-icon.svg {
   width: 70rpx;
   height: 70rpx;
   padding: 15rpx;
+}
+
+.form-textarea-placeholder {
+  line-height: 60rpx;
+}
+
+.form-item-content .form-textarea {
+  border: 1rpx solid rgba(218, 237, 248, 0.9);
+  border-radius: 10rpx;
+  min-height: 50rpx;
+  line-height: 60rpx;
+  font-size: 24rpx;
+  padding: 10rpx;
+  overflow: hidden;
 }

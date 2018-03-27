@@ -1,1 +1,41 @@
 /* pages/list/list.wxss */
+.record-list {
+  /* background-color: #333; */
+  padding-top: 30rpx;
+}
+.record-item {
+  border-radius: 30rpx;
+  padding: 20rpx;
+  box-shadow: 0 0 20rpx rgba(198, 216, 229, .7); 
+}
+.item-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.item-location-name {
+  font-size: 28rpx;
+}
+.item-location {
+  font-size: 24rpx;
+  color: #666;
+}
+.item-type {
+  width: 40rpx;
+  height: 40rpx;
+}
+.item-mood {
+  width: 60rpx;
+  height: 60rpx;
+}
+.item-weather {
+  display: flex;
+  flex-direction: column;
+}
+.item-weather-icon {
+  width: 40rpx;
+  height: 40rpx;
+  padding: 10rpx;
+  background-color: #333;
+}

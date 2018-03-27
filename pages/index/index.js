@@ -4,10 +4,6 @@ const app = getApp()
 
 Page({
   data: {
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
   // 设置页面分享内容
   onShareAppMessage: function(res) {

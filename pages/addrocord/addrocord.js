@@ -17,20 +17,20 @@ Page({
     location: null,
     weather: null,
     radioItems: [
-      { src: '../../images/1.png', name: '1', value: '普通', checked: 'true' },
-      { src: '../../images/2.png', name: '2', value: '开心' },
-      { src: '../../images/3.png', name: '3', value: '大笑' },
-      { src: '../../images/4.png', name: '4', value: '伤心' },
-      { src: '../../images/5.png', name: '5', value: '惊讶' },
-      { src: '../../images/6.png', name: '6', value: '发怒' },
+      { src: '../../images/1.png', value: '普通', checked: 'true' },
+      { src: '../../images/2.png', value: '开心' },
+      { src: '../../images/3.png', value: '大笑' },
+      { src: '../../images/4.png', value: '伤心' },
+      { src: '../../images/5.png', value: '惊讶' },
+      { src: '../../images/6.png', value: '发怒' },
     ],
     siteListItems: [
-      { src: '../../images/site_1.svg', name: 'site_1', value: '徒步', checked: 'true' },
-      { src: '../../images/site_2.svg', name: 'site_2', value: '餐厅' },
-      { src: '../../images/site_3.svg', name: 'site_3', value: '酒店' },
-      { src: '../../images/site_4.svg', name: 'site_4', value: '景区' },
-      { src: '../../images/site_5.svg', name: 'site_5', value: '场馆' },
-      { src: '../../images/site_6.svg', name: 'site_6', value: '公园' },
+      { src: '../../images/site_1.svg', value: '徒步', checked: 'true' },
+      { src: '../../images/site_2.svg', value: '餐厅' },
+      { src: '../../images/site_3.svg', value: '酒店' },
+      { src: '../../images/site_4.svg', value: '景区' },
+      { src: '../../images/site_5.svg', value: '场馆' },
+      { src: '../../images/site_6.svg', value: '公园' },
     ],
     hidden: false
   },
@@ -103,19 +103,24 @@ Page({
 
   // 处理天气数据
   dealWeatherData: (data) => {
+    console.log(data);
     let _date = data.date.split('(')[0];
-    let _now = parseInt(data.date.split('：')[1].replace(/[\(-\)]/g, '')) + '°';
+    let _now = data.date.split('：')[1].replace(/[\(-\)]/g, '');
     let _result = {
       city: data.currentCity,
       pm25: data.pm25,
       date: _date,
       realtimeTemperature: _now,
-      temperature: weather.dealTemperature(data.temperature),
+      temperature: data.temperature,
       weather: data.weatherDesc,
       wind: data.wind,
       iconSrc: weather.weatherMoreLevel(data.weatherDesc)[0].src,
     };
     return _result;
+  },
+
+  formSubmit: function(e) {
+    console.log(e);
   },
 
   /**

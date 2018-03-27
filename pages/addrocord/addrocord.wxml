@@ -14,53 +14,25 @@
     <view class="weather">
       <view class="weather-base-info">
         <text>{{weather.date}}</text>
-        <text>PM2.5: {{weather.pm25}}</text>
         <text>天气: {{weather.weather}}</text>
         <text>风向: {{weather.wind}}</text>
+        <text>PM2.5: {{weather.pm25}}</text>
       </view>
       <view class="weather-today-info">
-        <text class="temperature-now">{{weather.realtimeTemperature}}</text>
+        <text class="temperature-now">实时温度: {{weather.realtimeTemperature}}</text>
         <image class="weather-icon" src="{{weather.iconSrc}}" />
         <text class="temperature">{{weather.temperature}}</text>
       </view>
     </view>
   </view>
   <form bindsubmit="formSubmit" bindreset="formReset">
-    <!-- <view class="form-item">
-      <text class="form-item-label">地点</text>
-      <view class="form-item-content">
-        <block wx:if="location">
-          <text>{{locationName}}</text>
-          <text>(E: {{location.longitude[0]}}°{{location.longitude[1]}}′ N: {{location.latitude[0]}}°{{location.latitude[1]}}′)</text>
-        </block>
-        <block wx:else>
-          <text class="page-body-text">正在获取...</text>
-        </block>
-      </view>
-    </view>
-    <view class="form-item">
-      <text class="form-item-label">天气</text>
-      <view class="form-item-content">
-        <block wx:if="weather">
-          <text>{{weather.currentCity}}</text>
-          <text>{{weather.date}}</text>
-          <text>{{weather.pm25}}</text>
-          <text>{{weather.temperature}}</text>
-          <text>{{weather.weatherDesc}}</text>
-          <text>{{weather.wind}}</text>
-        </block>
-        <block wx:else>
-          <text class="page-body-text">正在获取...</text>
-        </block>
-      </view>
-    </view> -->
     <view class="form-item">
       <text class="form-item-label">心情</text>
       <view class="form-item-content">
-        <radio-group class="mood-group" bindchange="moodRadioChange">
+        <radio-group class="mood-group" name="mood" bindchange="moodRadioChange">
           <view class="mood-item {{item.checked ? 'checked' : ''}}" wx:key="item" wx:for="{{radioItems}}">
-            <radio id="{{item.name}}" hidden value="{{item.name}}" checked="{{item.checked}}"></radio>
-            <label class="mood-label" for="{{item.name}}">
+            <radio id="{{item.value}}" hidden value="{{item.value}}" checked="{{item.checked}}"></radio>
+            <label class="mood-label" for="{{item.value}}">
               <image class="mood-icon" src="{{item.src}}" />
             </label>
           </view>
@@ -70,10 +42,10 @@
     <view class="form-item">
       <text class="form-item-label">类型</text>
       <view class="form-item-content">
-        <radio-group class="mood-group" bindchange="siteRadioChange">
+        <radio-group class="mood-group" name="type" bindchange="siteRadioChange">
           <view class="mood-item {{item.checked ? 'checked' : ''}}" wx:key="item" wx:for="{{siteListItems}}">
-            <radio id="{{item.name}}" hidden value="{{item.name}}" checked="{{item.checked}}"></radio>
-            <label class="mood-label" for="{{item.name}}">
+            <radio id="{{item.value}}" hidden value="{{item.value}}" checked="{{item.checked}}"></radio>
+            <label class="mood-label" for="{{item.value}}">
               <image class="mood-icon svg" src="{{item.src}}" />
             </label>
           </view>
@@ -83,7 +55,7 @@
     <view class="form-item">
       <text class="form-item-label">备注</text>
       <view class="form-item-content">
-        <textarea bindblur="bindTextAreaBlur" auto-height placeholder="自动变高" />
+        <textarea class="form-textarea" name="remark" placeholder-class="form-textarea-placeholder" bindblur="bindTextAreaBlur" auto-height cursor-spacing="10" placeholder="在这里写下记录~~" />
       </view>
     </view>
     <!-- <view class="form-item">

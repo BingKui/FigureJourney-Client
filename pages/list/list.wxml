@@ -1,4 +1,26 @@
 <!--足迹列表-->
-<!--  列表展示已经添加的足迹：事件倒叙（最近的在上边）  -->
+<!--  列表展示已经添加的足迹：时间倒叙（最近的在上边）  -->
 <!--  可以通过时间查找特定时间段内的记录  -->
 <!--  列表展示数据：1.标题 2.地点 3.天气 4.心情 5.类型  -->
+<view class="page-container">
+  <view class="record-list">
+    <view class="record-item">
+      <view class="item-title">
+        <view class="item-title-name">
+          <text class="item-location-name">杭州市-仓前</text>
+          <text class="item-location">(E:120 N：30)</text>
+        </view>
+        <image class="item-type" src="../../images/site_1.svg" />
+      </view>
+      <view class="item-content">
+        <image class="item-mood" src="../../images/1.png" />
+      </view>
+      <view class="item-weather">
+        <image class="item-weather-icon" src="../../images/icon/1.png" />
+      </view>
+      <view class="item-other">
+        <text>remark</text>
+      </view>
+    </view>  
+  </view>
+</view>
