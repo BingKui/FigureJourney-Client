@@ -1,42 +1,103 @@
 <!--添加回忆-->
 <!-- 回忆类型：1.默认（脚印） 2.住宿（酒店） 3.餐饮（餐厅） 4.景点（景区） 5.场馆（体育场）  -->
-<!--  保存数据：1.地点 2.天气 3.标题 4.心情 5.补充 6.类型 7.照片（后续） 8.录音（后续） 9.视频（后续）  -->
+<!--  保存数据：1.地点 2.天气 3.标题（去除） 4.心情 5.补充 6.类型 7.照片（后续） 8.录音（后续） 9.视频（后续）  -->
 <!--  智能化：获取目前地点，判断是否是存在的类型，自动选中该类型  -->
 <view class="page-container">
+  <view class="location-info-card">
+    <view class="name flex-row-center">
+      <image class="location-icon" src="../../images/location.svg"/>
+      <text>{{weather.city}}-{{locationName}}</text>
+    </view>
+    <view class="math-tude flex-row-center">
+      <text>(E: {{location.longitude[0]}}°{{location.longitude[1]}}′ N: {{location.latitude[0]}}°{{location.latitude[1]}}′)</text>
+    </view>
+    <view class="weather">
+      <view class="weather-base-info">
+        <text>{{weather.pm25}}</text>
+        <text>{{weather.weatherDesc}}</text>
+        <text>{{weather.wind}}</text>
+      </view>
+      <view class="weather-today-info">
+        <text class="temperature-now">{{weather.realtimeTemperature}}</text>
+        <image class="weather-icon" src="{{weather.iconSrc}}" />
+        <text class="temperature">{{weather.temperature}}</text>
+      </view>
+    </view>
+    <view class="date">{{weather.date}}</view>
+  </view>
   <form bindsubmit="formSubmit" bindreset="formReset">
-    <view class="form-item">
-      <text>地点</text>
-      <view class="page-body-text-location">
+    <!-- <view class="form-item">
+      <text class="form-item-label">地点</text>
+      <view class="form-item-content">
         <block wx:if="location">
-          <text>E: {{location.longitude[0]}}°{{location.longitude[1]}}′</text>
-          <text>N: {{location.latitude[0]}}°{{location.latitude[1]}}′</text>
+          <text>{{locationName}}</text>
+          <text>(E: {{location.longitude[0]}}°{{location.longitude[1]}}′ N: {{location.latitude[0]}}°{{location.latitude[1]}}′)</text>
         </block>
-        <block  wx:else>
+        <block wx:else>
           <text class="page-body-text">正在获取...</text>
         </block>
       </view>
     </view>
     <view class="form-item">
-      <text>心情</text>
-      <radio-group class="mood-group" bindchange="moodRadioChange">
-        <view class="mood-item {{item.checked ? 'checked' : ''}}" wx:key="item" wx:for="{{radioItems}}">
-          <radio id="{{item.name}}" hidden value="{{item.name}}" checked="{{item.checked}}"></radio>
-          <label class="mood-label" for="{{item.name}}">
-            <image class="mood-icon" src="{{item.src}}" />
-          </label>
-        </view>
-      </radio-group>
+      <text class="form-item-label">天气</text>
+      <view class="form-item-content">
+        <block wx:if="weather">
+          <text>{{weather.currentCity}}</text>
+          <text>{{weather.date}}</text>
+          <text>{{weather.pm25}}</text>
+          <text>{{weather.temperature}}</text>
+          <text>{{weather.weatherDesc}}</text>
+          <text>{{weather.wind}}</text>
+        </block>
+        <block wx:else>
+          <text class="page-body-text">正在获取...</text>
+        </block>
+      </view>
+    </view> -->
+    <view class="form-item">
+      <text class="form-item-label">心情</text>
+      <view class="form-item-content">
+        <radio-group class="mood-group" bindchange="moodRadioChange">
+          <view class="mood-item {{item.checked ? 'checked' : ''}}" wx:key="item" wx:for="{{radioItems}}">
+            <radio id="{{item.name}}" hidden value="{{item.name}}" checked="{{item.checked}}"></radio>
+            <label class="mood-label" for="{{item.name}}">
+              <image class="mood-icon" src="{{item.src}}" />
+            </label>
+          </view>
+        </radio-group>
+      </view>
     </view>
     <view class="form-item">
-      <text>类型</text>
-      <radio-group class="mood-group" bindchange="siteRadioChange">
-        <view class="mood-item {{item.checked ? 'checked' : ''}}" wx:key="item" wx:for="{{siteListItems}}">
-          <radio id="{{item.name}}" hidden value="{{item.name}}" checked="{{item.checked}}"></radio>
-          <label class="mood-label" for="{{item.name}}">
-            <image class="mood-icon svg" src="{{item.src}}" />
-          </label>
-        </view>
-      </radio-group>
+      <text class="form-item-label">类型</text>
+      <view class="form-item-content">
+        <radio-group class="mood-group" bindchange="siteRadioChange">
+          <view class="mood-item {{item.checked ? 'checked' : ''}}" wx:key="item" wx:for="{{siteListItems}}">
+            <radio id="{{item.name}}" hidden value="{{item.name}}" checked="{{item.checked}}"></radio>
+            <label class="mood-label" for="{{item.name}}">
+              <image class="mood-icon svg" src="{{item.src}}" />
+            </label>
+          </view>
+        </radio-group>
+      </view>
     </view>
+    <view class="form-item">
+      <text class="form-item-label">备注</text>
+      <view class="form-item-content">
+        <textarea bindblur="bindTextAreaBlur" auto-height placeholder="自动变高" />
+      </view>
+    </view>
+    <!-- <view class="form-item">
+      <text class="form-item-label">图片</text>
+       <textarea bindblur="bindTextAreaBlur" auto-height placeholder="自动变高" />
+    </view> -->
+    <!-- <view class="form-item">
+      <text class="form-item-label">录音</text>
+       <textarea bindblur="bindTextAreaBlur" auto-height placeholder="自动变高" />
+    </view> -->
+    <!-- <view class="form-item">
+      <text class="form-item-label">视频</text>
+       <textarea bindblur="bindTextAreaBlur" auto-height placeholder="自动变高" />
+    </view> -->
+    <button type="primary" form-type="submit">添加</button>
   </form>
 </view>

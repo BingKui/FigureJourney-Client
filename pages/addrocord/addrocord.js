@@ -3,6 +3,7 @@
 const BMap = require('../../lib/bmap.js');
 const config=  require('../../utils/config.js');
 const utils = require('../../utils/util.js');
+const weather = require('./util.js');
 const bmap = new BMap.BMapWX({
   ak: config.baiduAK
 });
@@ -12,7 +13,9 @@ Page({
    * 页面的初始数据
    */
   data: {
+    locationName: '',
     location: null,
+    weather: null,
     radioItems: [
       { src: '../../images/1.png', name: '1', value: '普通', checked: 'true' },
       { src: '../../images/2.png', name: '2', value: '开心' },
@@ -61,18 +64,32 @@ Page({
    */
   onLoad: function (options) {
     const _that = this;
+    // 调用接口获取地址信息
+    bmap.regeocoding({
+      success: function (res) {
+        console.log('jieguo:', res);
+        _that.setData({
+          locationName: res.originalData.result.business
+        });
+      }
+    });
+    // 获取天气信息
+    bmap.weather({
+      success: function (res) {
+        const _w = _that.dealWeatherData(res.currentWeather[0]);
+        console.log('天气', _w);
+        _that.setData({
+          weather: _w
+        });
+      }
+    });
     wx.getLocation({
       success: function(res) {
         console.log('当前地理位置', res);
         _that.setData({
           location: utils.formatLocation(res.longitude, res.latitude)
         });
-        // 调用接口获取地址信息
-        bmap.regeocoding({
-          success: function (res) {
-            console.log('jieguo:', res);
-          }
-        });
+        
       },
     })
   },
@@ -82,6 +99,23 @@ Page({
    */
   onReady: function () {
   
+  },
+
+  // 处理天气数据
+  dealWeatherData: (data) => {
+    let _date = data.date.split('(')[0];
+    let _now = parseInt(data.date.split('：')[1].replace(/[\(-\)]/g, '')) + '°';
+    let _result = {
+      city: data.currentCity,
+      pm25: data.pm25,
+      date: _date,
+      realtimeTemperature: _now,
+      temperature: weather.dealTemperature(data.temperature),
+      weather: data.weatherDesc,
+      wind: data.wind,
+      iconSrc: weather.weatherMoreLevel(data.weatherDesc)[0].src,
+    };
+    return _result;
   },
 
   /**

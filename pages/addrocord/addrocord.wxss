@@ -3,6 +3,51 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin-bottom: 20rpx;
+  font-size: 28rpx;
+}
+.form-item .form-item-label {
+  margin-right: 10rpx;
+  width: 60rpx;
+}
+.form-item .form-item-content {
+  flex: 1;
+}
+
+.location-info-card {
+  font-size: 28rpx;
+  background-color: rgba(218, 237, 248, .9);
+  border-radius: 20rpx;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.location-info-card .name {
+  font-size: 36rpx;
+}
+.location-info-card .math-tude {
+  text-align: center;
+  font-size: 24rpx;
+  color: #666;
+}
+.location-info-card .location-icon {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.location-info-card .weather {
+  display: flex;
+}
+.weather-today-info {
+  flex: 1;
+}
+.weather-today-info .weather-icon {
+  width: 60rpx;
+  height: 60rpx;
+}
+.weather-base-info {
+  display: flex;
+  flex-direction: column;
 }
 
 .mood-group {

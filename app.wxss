@@ -9,7 +9,8 @@ page {
   right: 0;
 }
 .page-container {
-  height: 100%;
+  height: 94%;
+  padding: 0 3%;
 }
 .container {
   height: 100%;
