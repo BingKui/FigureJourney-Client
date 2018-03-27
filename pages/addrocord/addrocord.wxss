@@ -14,6 +14,7 @@
 .mood-item {
   width: 100rpx;
   height: 100rpx;
+  border-radius: 20rpx;
 }
 .mood-item.checked {
   background-color: rgba(218, 237, 248, .9);
@@ -21,4 +22,9 @@
 .mood-icon {
   width: 100rpx;
   height: 100rpx;
+}
+.mood-icon.svg {
+  width: 70rpx;
+  height: 70rpx;
+  padding: 15rpx;
 }

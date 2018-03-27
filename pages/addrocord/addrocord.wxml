@@ -5,8 +5,20 @@
 <view class="page-container">
   <form bindsubmit="formSubmit" bindreset="formReset">
     <view class="form-item">
+      <text>地点</text>
+      <view class="page-body-text-location">
+        <block wx:if="location">
+          <text>E: {{location.longitude[0]}}°{{location.longitude[1]}}′</text>
+          <text>N: {{location.latitude[0]}}°{{location.latitude[1]}}′</text>
+        </block>
+        <block  wx:else>
+          <text class="page-body-text">正在获取...</text>
+        </block>
+      </view>
+    </view>
+    <view class="form-item">
       <text>心情</text>
-      <radio-group class="mood-group" bindchange="radioChange">
+      <radio-group class="mood-group" bindchange="moodRadioChange">
         <view class="mood-item {{item.checked ? 'checked' : ''}}" wx:key="item" wx:for="{{radioItems}}">
           <radio id="{{item.name}}" hidden value="{{item.name}}" checked="{{item.checked}}"></radio>
           <label class="mood-label" for="{{item.name}}">
@@ -16,23 +28,12 @@
       </radio-group>
     </view>
     <view class="form-item">
-      <text>心情</text>
-      <radio-group class="mood-group" bindchange="radioChange">
-        <view class="mood-item {{item.checked ? 'checked' : ''}}" wx:key="item" wx:for="{{radioItems}}">
+      <text>类型</text>
+      <radio-group class="mood-group" bindchange="siteRadioChange">
+        <view class="mood-item {{item.checked ? 'checked' : ''}}" wx:key="item" wx:for="{{siteListItems}}">
           <radio id="{{item.name}}" hidden value="{{item.name}}" checked="{{item.checked}}"></radio>
           <label class="mood-label" for="{{item.name}}">
-            <image class="mood-icon" src="{{item.src}}" />
-          </label>
-        </view>
-      </radio-group>
-    </view>
-    <view class="form-item">
-      <text>心情</text>
-      <radio-group class="mood-group" bindchange="radioChange">
-        <view class="mood-item {{item.checked ? 'checked' : ''}}" wx:key="item" wx:for="{{radioItems}}">
-          <radio id="{{item.name}}" hidden value="{{item.name}}" checked="{{item.checked}}"></radio>
-          <label class="mood-label" for="{{item.name}}">
-            <image class="mood-icon" src="{{item.src}}" />
+            <image class="mood-icon svg" src="{{item.src}}" />
           </label>
         </view>
       </radio-group>
