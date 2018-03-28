@@ -47,6 +47,11 @@ module.exports = {
             url: '../' + name + '/' + name
         });
     },
+    redirectTo: (name) => {
+      wx.redirectTo({
+        url: '../' + name + '/' + name,
+      });
+    },
     successTip: (text) => {
         tip(text, 'success');
     },

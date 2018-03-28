@@ -3,24 +3,36 @@
 <!--  可以通过时间查找特定时间段内的记录  -->
 <!--  列表展示数据：1.标题 2.地点 3.天气 4.心情 5.类型  -->
 <view class="page-container">
-  <view class="record-list">
-    <view class="record-item">
+  <scroll-view class="record-list" scroll-y bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+    <view class="record-item" wx:key="item" wx:for="{{recordList}}">
       <view class="item-title">
         <view class="item-title-name">
-          <text class="item-location-name">杭州市-仓前</text>
-          <text class="item-location">(E:120 N：30)</text>
+          <text class="item-location-name">{{item.city}}-{{item.location}}</text>
+          <text class="item-location">(E: {{item.point.longitude[0]}}°{{item.point.longitude[1]}}′ N: {{item.point.latitude[0]}}°{{item.point.latitude[1]}}′)</text>
         </view>
         <image class="item-type" src="../../images/site_1.svg" />
       </view>
       <view class="item-content">
+        <view class="item-weather">
+          <view class="weather-info">
+            <text>{{item.weather.date}}</text>
+            <text>天气: {{item.weather.weather}}</text>
+            <text>风向: {{item.weather.wind}}</text>
+          </view>
+          <view class="weather-info">
+            <text>实时: {{item.weather.realtimeTemperature}}</text>
+            <text>{{item.weather.temperature}}</text>
+            <text>PM2.5: {{item.weather.pm25}}</text>
+          </view>
+        </view>
         <image class="item-mood" src="../../images/1.png" />
       </view>
-      <view class="item-weather">
-        <image class="item-weather-icon" src="../../images/icon/1.png" />
+      <view wx:if="{{item.remark}}" class="item-other">
+        <text>备注: {{item.remark}}</text>
       </view>
-      <view class="item-other">
-        <text>remark</text>
-      </view>
-    </view>  
-  </view>
+    </view>
+    <view wx:if="{{showBottomLine}}">
+      <text>数据已经加载完~~~</text>
+    </view>
+  </scroll-view>
 </view>

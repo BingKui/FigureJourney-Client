@@ -41,10 +41,10 @@ page {
 }
 .view-add-btn image {
   width: 120rpx;
-  color: rgb(87, 99, 115)
+  color: #576373;
 }
 .view-list-btn image,
 .view-ower-btn image {
   width: 60rpx;
-  color: rgb(87, 99, 115)
+  color: #576373;
 }

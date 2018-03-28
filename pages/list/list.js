@@ -1,27 +1,57 @@
 // pages/list/list.js
+const Data = require('./data.js');
+const _url = require('../../utils/url.js');
+const ajax = require('../../utils/ajax.js');
+const tools = require('../../utils/tools.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    recordList: [{
-      
-    }]
+    recordList: [],
+    pageNum: 1,
+    showBottomLine: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    this.getPageData(1);
+  },
+
+  // 分页获取数据
+  getPageData: function (page, callback) {
+    const wx_openid = tools.getItem('userOpenId');
+    const param = {
+      "where":{
+        "wx_openid": wx_openid
+      },
+      "order": "createdAt DESC",
+      "skip": (page - 1) * 20,
+      "limit": 20
+    };
+    const _that = this;
+    wx.showLoading({
+      title: '加载中...',
+    })
+    // 获取数据
+    ajax.ApiCloudGet(_url.getRecordList, param, res => {
+      _that.setData({
+        recordList: res,
+        showBottomLine: res.length < 20,
+        pageNum: page
+      });
+      wx.hideLoading();
+    });
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+
   },
 
   /**
@@ -44,25 +74,14 @@ Page({
   onUnload: function () {
   
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
+  // 下拉刷新
+  upper:function () {
+    this.getPageData(1);
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
+  // 上啦加载
+  lower: function () {
+    if (!this.data.showBottomLine) {
+      this.getPageData(this.data.pageNum + 1);
+    }
   }
 })

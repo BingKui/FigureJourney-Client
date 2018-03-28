@@ -7,4 +7,5 @@ module.exports = {
     userCount: _url + '/user/count',
     userCreate: _url + '',
     addRecordUrl: _url + '/record',
+    getRecordList: _url + '/record',
 };

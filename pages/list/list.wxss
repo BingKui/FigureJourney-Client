@@ -1,11 +1,23 @@
 /* pages/list/list.wxss */
+page {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.page-container {
+  width: 100%;
+  padding: 0;
+  height: 100%;
+}
 .record-list {
-  /* background-color: #333; */
-  padding-top: 30rpx;
+  height: 100%;
 }
 .record-item {
   border-radius: 30rpx;
   padding: 20rpx;
+  margin: 20rpx;
   box-shadow: 0 0 20rpx rgba(198, 216, 229, .7); 
 }
 .item-title {
@@ -14,28 +26,52 @@
   justify-content: space-between;
   align-items: center;
 }
+.item-title-name {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
 .item-location-name {
-  font-size: 28rpx;
+  font-size: 32rpx;
+  max-width: 350rpx;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
 }
 .item-location {
   font-size: 24rpx;
   color: #666;
+  margin-left: 10rpx;
 }
 .item-type {
   width: 40rpx;
   height: 40rpx;
 }
-.item-mood {
+.item-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.item-content .item-mood {
   width: 60rpx;
   height: 60rpx;
 }
-.item-weather {
+
+.item-content .item-weather {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  font-size: 24rpx;
+  color: #576373;
+}
+.weather-info {
+  flex: 1;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
 }
-.item-weather-icon {
-  width: 40rpx;
-  height: 40rpx;
-  padding: 10rpx;
-  background-color: #333;
+.item-other {
+  font-size: 24rpx;
+  color: #576373;
 }

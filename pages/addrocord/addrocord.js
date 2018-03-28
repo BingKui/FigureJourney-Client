@@ -2,7 +2,6 @@
 // 引入腾讯地图
 const BMap = require('../../lib/bmap.js');
 const config = require('../../utils/config.js');
-// const utils = require('../../utils/util.js');
 const tools = require('../../utils/tools.js');
 const ajax = require('../../utils/ajax.js');
 const weather = require('./util.js');
@@ -53,31 +52,55 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        const _that = this;
-        // 调用接口获取地址信息
-        bmap.regeocoding({
-            success: function (res) {
-                _that.setData({
-                    locationName: res.originalData.result.business
-                });
-            }
-        });
-        // 获取天气信息
-        bmap.weather({
-            success: function (res) {
-                const _w = _that.dealWeatherData(res.currentWeather[0]);
-                _that.setData({
-                    weather: _w
-                });
-            }
-        });
-        wx.getLocation({
-            success: function (res) {
-                _that.setData({
-                    location: tools.formatLocation(res.longitude, res.latitude)
-                });
-            },
+        wx.showLoading({
+          title: '获取位置信息~'
         })
+        const _that = this;
+        _that.getPoint(() => {
+          _that.getLocationName(() => {
+            _that.getWeatherInfo(() => {
+              wx.hideLoading();
+            });
+          });
+        });
+    },
+    // 获取坐标信息
+    getPoint: function(callback) {
+      const _that = this;
+      wx.getLocation({
+        success: function (res) {
+          _that.setData({
+            location: tools.formatLocation(res.longitude, res.latitude)
+          });
+          callback && callback();
+        },
+      });
+    },
+    // 获取位置信息
+    getLocationName: function(callback) {
+      const _that = this;
+      // 调用接口获取地址信息
+      bmap.regeocoding({
+        success: function (res) {
+          _that.setData({
+            locationName: res.originalData.result.business
+          });
+          callback && callback();
+        }
+      });
+    },
+    // 获取天气信息
+    getWeatherInfo: function(callback) {
+      const _that = this;
+      bmap.weather({
+        success: function (res) {
+          const _w = _that.dealWeatherData(res.currentWeather[0]);
+          _that.setData({
+            weather: _w
+          });
+          callback && callback();
+        }
+      });
     },
 
     /**
@@ -121,7 +144,7 @@ Page({
         };
         ajax.ajaxPost(_url.addRecordUrl, param, res => {
             tools.successTip('添加成功');
-            tools.navTo('list');
+            tools.redirectTo('list');
         });
     },
 
