@@ -1,5 +1,4 @@
 // pages/list/list.js
-const Data = require('./data.js');
 const _url = require('../../utils/url.js');
 const ajax = require('../../utils/ajax.js');
 const tools = require('../../utils/tools.js');
