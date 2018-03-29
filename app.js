@@ -36,7 +36,7 @@ App({
     globalData: {
         userInfo: null
     },
-    getUserInfo: (openid) => {
+    getUserInfo: function(openid) {
         const _that = this;
         // 获取用户信息
         wx.getSetting({
@@ -48,12 +48,17 @@ App({
                             // 可以将 res 发送给后台解码出 unionId
                             // 查询是否存在用户信息，不能存在就创建
                             ajax.ApiCloudGet(_url.userCount, {'wx_openid': openid}, count => {
-                                console.log(count);
                                 if (count.count === 0) {
                                     // 用户不存在创建用户
                                     _that.createUser(openid, info.userInfo);
                                 }
                             });
+                            _that.globalData.userInfo = info.userInfo
+                            // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+                            // 所以此处加入 callback 以防止这种情况
+                            if (_that.userInfoReadyCallback) {
+                              _that.userInfoReadyCallback(info)
+                            }
                         }
                     });
                 }

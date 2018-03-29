@@ -1,1 +1,11 @@
 /* pages/ower/ower.wxss */
+.view-user-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.view-user-info image {
+  width: 300rpx;
+  height: 300rpx;
+}
