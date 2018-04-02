@@ -17,18 +17,19 @@ App({
                         js_code: res.code,
                         grant_type: 'authorization_code'
                     };
-                    ajax.ajaxWx(_url.WX_jscode2session, _opts, data => {
-                        tools.setItem('userOpenId', data.openid);
-                        _that.getUserInfo(data.openid);
-                    });
+                    console.log(_opts);
+                    // ajax.ajaxWx(_url.WX_jscode2session, _opts, data => {
+                    //     tools.setItem('userOpenId', data.openid);
+                    //     _that.getUserInfo(data.openid);
+                    // });
                     const _ops = {
                         grant_type: 'client_credential',
                         appid: config.AppId,
                         secret: config.AppSecret
                     };
-                    ajax.ajaxWx(_url.WX_token, _ops, data => {
-                        tools.setItem('AccessToken', data.access_token);
-                    });
+                    // ajax.ajaxWx(_url.WX_token, _ops, data => {
+                    //     tools.setItem('AccessToken', data.access_token);
+                    // });
                 }
             }
         });

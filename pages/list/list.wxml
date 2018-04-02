@@ -3,7 +3,7 @@
 <!--  可以通过时间查找特定时间段内的记录  -->
 <!--  列表展示数据：1.标题 2.地点 3.天气 4.心情 5.类型  -->
 <view class="page-container">
-  <scroll-view class="record-list" scroll-y bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+  <scroll-view class="record-list" scroll-y upper-threshold="100" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
     <view class="record-item" wx:key="item" wx:for="{{recordList}}">
       <view class="item-title">
         <view class="item-title-name">
@@ -31,7 +31,7 @@
         <text>备注: {{item.remark}}</text>
       </view>
     </view>
-    <view wx:if="{{showBottomLine}}">
+    <view class="page-end" wx:if="{{showBottomLine}}">
       <text>数据已经加载完~~~</text>
     </view>
   </scroll-view>

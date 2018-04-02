@@ -9,3 +9,22 @@
   width: 300rpx;
   height: 300rpx;
 }
+.view-count-list {
+  margin-top: 30rpx;
+}
+.count-item .item-title {
+  font-size: 32rpx;
+  color:#576373;
+}
+.count-item .item-content {
+  display: flex;
+  flex-direction: column;
+}
+.count-item .item-content .fly-item {
+  margin: 15rpx 0;
+  padding: 10rpx 20rpx;
+  border-radius: 10rpx;
+  font-size: 28rpx;
+  box-shadow: 0 0 20rpx rgba(6, 6, 6, .2);
+  color:#576373;
+}

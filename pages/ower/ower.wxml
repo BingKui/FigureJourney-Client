@@ -7,17 +7,22 @@
   </view>
   <view class="view-count-list">
     <view class="count-item">
-      <view class="item-title">我最经常去的省份</view>
+      <view class="item-title">我最近去过得地方</view>
       <view class="item-content">
-        <text class="fly-item-1"></text>
-        <text class="fly-item-2"></text>
-        <text class="fly-item-3"></text>
-        <text class="fly-item-4"></text>
-        <text class="fly-item-5"></text>
+        <text wx:for="{{locationList}}"
+          wx:key="item"
+          wx:for-index="idx"
+          class="fly-item fly-item-{{idx}}">{{item.city}}-{{item.location}}</text>
       </view>
     </view>
-    <view class="count-item">
+    <!-- <view class="count-item">
       <view class="item-title">我最经常去的地方</view>
-    </view>
+      <view class="item-content">
+        <text wx:for="{{provincesList}}"
+          wx:key="item"
+          wx:for-index="idx"
+          class="fly-item fly-item-{{idx}}">{{item.name}}</text>
+      </view>
+    </view> -->
   </view>
 </view>

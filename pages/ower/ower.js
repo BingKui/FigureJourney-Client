@@ -1,22 +1,45 @@
 // pages/ower/ower.js
 const app = getApp();
-console.log(app);
+const _url = require('../../utils/url.js');
+const ajax = require('../../utils/ajax.js');
+const tools = require('../../utils/tools.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    userInfo: ''
+    userInfo: '',
+    locationList: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(app.globalData);
-    this.setData({
-      userInfo: app.globalData.userInfo
+    
+  },
+
+  getData: function () {
+    const wx_openid = tools.getItem('userOpenId');
+    const param = {
+      "where": {
+        "wx_openid": wx_openid
+      },
+      "fields": { "city": true, "location": true },
+      "order": "createdAt DESC",
+      "limit": 10
+    };
+    const _that = this;
+    wx.showLoading({
+      title: '加载中...',
+    })
+    // 获取数据
+    ajax.ApiCloudGet(_url.getRecordList, param, res => {
+      _that.setData({
+        locationList: res
+      });
+      wx.hideLoading();
     });
   },
 
@@ -31,7 +54,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    this.setData({
+      userInfo: app.globalData.userInfo
+    });
+    this.getData();
   },
 
   /**
