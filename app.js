@@ -12,24 +12,15 @@ App({
                 // 发送 res.code 到后台换取 openId, sessionKey, unionId
                 if (res.code) {
                     const _opts = {
-                        appid: config.AppId,
-                        secret: config.AppSecret,
-                        js_code: res.code,
-                        grant_type: 'authorization_code'
+                        jsCode: res.code,
                     };
-                    console.log(_opts);
-                    // ajax.ajaxWx(_url.WX_jscode2session, _opts, data => {
-                    //     tools.setItem('userOpenId', data.openid);
-                    //     _that.getUserInfo(data.openid);
-                    // });
-                    const _ops = {
-                        grant_type: 'client_credential',
-                        appid: config.AppId,
-                        secret: config.AppSecret
-                    };
-                    // ajax.ajaxWx(_url.WX_token, _ops, data => {
-                    //     tools.setItem('AccessToken', data.access_token);
-                    // });
+                    ajax.ajaxWx(_url.codeUrl, _opts, data => {
+                        const _res = data.data;
+                        const _dd = JSON.parse(_res.openId);
+                        tools.setItem('userOpenId', _dd.openid);
+                        tools.setItem('AccessToken', _res.accessToken);
+                        _that.getUserInfo(data.openid);
+                    });
                 }
             }
         });

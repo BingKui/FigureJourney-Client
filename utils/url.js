@@ -3,6 +3,7 @@ const _url = 'https://d.apicloud.com/mcm/api';
 module.exports = {
     WX_jscode2session: 'https://api.weixin.qq.com/sns/jscode2session',
     WX_token: 'https://api.weixin.qq.com/cgi-bin/token',
+    codeUrl: 'https://www.zqserver.club/interfaces/getOpenIdAndAccessToken',
     user: _url + '/user',
     userCount: _url + '/user/count',
     userCreate: _url + '',
